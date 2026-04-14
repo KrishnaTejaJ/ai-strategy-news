@@ -1,8 +1,21 @@
 {
     "feeds": [
         "https://www.lawfaremedia.org/rss.xml",
-        "https://www.chinatalk.media/feed",
         "https://cset.georgetown.edu/feed/",
-        "https://www.foreignaffairs.com/rss.xml"
+        "https://www.brookings.edu/topics/artificial-intelligence/feed/",
+        "https://ainowinstitute.org/feed",
+        "https://hai.stanford.edu/news/rss.xml",
+        "https://www.csis.org/analysis/feed",
+        "https://www.chinatalk.media/feed",
+        "https://www.foreignaffairs.com/rss.xml",
+        "https://warontherocks.com/feed/",
+        "https://www.atlanticcouncil.org/feed/",
+        "https://thediplomat.com/feed/",
+        "https://www.semiconductorengineering.com/feed/",
+        "https://openai.com/news/rss.xml",
+        "https://www.anthropic.com/feed.xml",
+        "https://deepmind.google/blog/rss.xml",
+        "https://importai.substack.com/feed",
+        "https://www.technologyreview.com/topic/artificial-intelligence/feed"
     ]
 }
