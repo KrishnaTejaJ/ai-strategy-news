@@ -9,7 +9,7 @@ jobs:
   run-scout:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Crucial: gives the bot permission to push code
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -34,3 +34,20 @@ jobs:
           git add ai-daily/*.md
           git commit -m "Automated Daily Briefing: $(date +'%Y-%m-%d')" || exit 0
           git push
+
+      - name: Update Gist with Briefing
+        env:
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+        run: |
+          DATE=$(date +'%Y-%m-%d')
+          FILE="ai-daily/Daily_Briefing_${DATE}.md"
+          if [ -f "$FILE" ]; then
+            CONTENT=$(jq -Rs . < "$FILE")
+            curl -s -X PATCH \
+              -H "Authorization: token $GIST_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              https://api.github.com/gists/$GIST_ID \
+              -d "{\"files\":{\"Daily_Briefing.md\":{\"content\":$CONTENT}}}"
+            echo "Gist updated"
+          fi
